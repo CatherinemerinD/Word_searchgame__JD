@@ -54,10 +54,10 @@ class _WebViewScreenState extends State<WebViewScreen> {
       await Directory(folderPath).create(recursive: true);
 
       await _copyAssetToFile('assets/www/index.html', '$folderPath/index.html');
-      await _copyAssetFolder('assets/www/css/', '$folderPath/css');
-      await _copyAssetFolder('assets/www/js/', '$folderPath/js');
-      await _copyAssetFolder('assets/www/sprites/', '$folderPath/sprites');
-      await _copyAssetFolder('assets/www/sounds/', '$folderPath/sounds');
+      await _copyAssetFolder('assets/www/css', '$folderPath/css');
+      await _copyAssetFolder('assets/www/js', '$folderPath/js');
+      await _copyAssetFolder('assets/www/sprites', '$folderPath/sprites');
+      await _copyAssetFolder('assets/www/sounds', '$folderPath/sounds');
 
       setState(() {
         localUrl = 'file://$folderPath/index.html';
