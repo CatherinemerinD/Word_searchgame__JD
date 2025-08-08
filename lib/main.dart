@@ -1,42 +1,21 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: unnecessary_import
 
-import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'dart:async';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'dart:typed_data';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:path_provider/path_provider.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final dir = await getApplicationDocumentsDirectory();
-  final wwwDir = Directory("${dir.path}/www");
-  if (!wwwDir.existsSync()) {
-    wwwDir.createSync(recursive: true);
-
-    // Copy each folder/file from assets manually
-    await _copyAssetFolder('www/assets', wwwDir.path);
-    await _copyAssetFolder('www/css', wwwDir.path);
-    await _copyAssetFolder('www/js', wwwDir.path);
-    await _copyAssetFolder('www', wwwDir.path); // main html/js/css
+  if (Platform.isAndroid) {
+    await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
 
   runApp(const MyApp());
-}
-
-Future<void> _copyAssetFolder(String assetPath, String targetPath) async {
-  final manifestContent = await rootBundle.loadString('AssetManifest.json');
-  final Map<String, dynamic> manifestMap = {};
-  manifestMap.addAll(
-    Map<String, dynamic>.from(manifestContent.isNotEmpty ? {} : {}),
-  ); // just placeholder map
-  // This approach is simplified — assuming manual list in pubspec.yaml
-  // If needed, copy per known files
-
-  final fileData = await rootBundle.load(assetPath);
-  final file = File("$targetPath/${assetPath.split('/').last}");
-  await file.writeAsBytes(fileData.buffer.asUint8List());
 }
 
 class MyApp extends StatelessWidget {
@@ -44,9 +23,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const WebViewScreen(),
+      home: WebViewScreen(),
     );
   }
 }
@@ -65,76 +44,94 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   void initState() {
     super.initState();
-    _prepareLocalUrl();
+    prepareLocalHtml();
   }
 
-  Future<void> _prepareLocalUrl() async {
-    final dir = await getApplicationDocumentsDirectory();
-    final indexPath = "${dir.path}/www/index.html";
-    final file = File(indexPath);
-    if (file.existsSync()) {
-      localUrl = Uri.file(indexPath).toString();
-      setState(() {});
+  Future<void> prepareLocalHtml() async {
+    try {
+      final tempDir = await getApplicationDocumentsDirectory();
+      final folderPath = '${tempDir.path}/www';
+      await Directory(folderPath).create(recursive: true);
+
+      await _copyAssetToFile('assets/www/index.html', '$folderPath/index.html');
+      await _copyAssetFolder('assets/www/css/', '$folderPath/css');
+      await _copyAssetFolder('assets/www/js/', '$folderPath/js');
+      await _copyAssetFolder('assets/www/sprites/', '$folderPath/sprites');
+      await _copyAssetFolder('assets/www/sounds/', '$folderPath/sounds');
+
+      setState(() {
+        localUrl = 'file://$folderPath/index.html';
+      });
+    } catch (e) {
+      debugPrint('Error copying files: $e');
+    }
+  }
+
+  Future<void> _copyAssetToFile(String assetPath, String filePath) async {
+    final ByteData data = await rootBundle.load(assetPath);
+    final buffer = data.buffer;
+    await File(filePath).writeAsBytes(
+      buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+      flush: true,
+    );
+  }
+
+  Future<void> _copyAssetFolder(String assetFolder, String targetFolder) async {
+    final manifestJson = await rootBundle.loadString('AssetManifest.json');
+    final Map<String, dynamic> manifest = json.decode(manifestJson);
+    final files = manifest.keys
+        .where((path) => path.startsWith(assetFolder))
+        .toList();
+
+    for (final assetPath in files) {
+      final relativePath = assetPath.replaceFirst(assetFolder, '');
+      final filePath = '$targetFolder$relativePath';
+      await Directory(File(filePath).parent.path).create(recursive: true);
+      await _copyAssetToFile(assetPath, filePath);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (localUrl == null) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
-
     return Scaffold(
-      body: InAppWebView(
-        initialUrlRequest: URLRequest(url: WebUri(localUrl!)),
-        initialOptions: InAppWebViewGroupOptions(
-          crossPlatform: InAppWebViewOptions(
-            javaScriptEnabled: true,
-            allowFileAccessFromFileURLs: true,
-            allowUniversalAccessFromFileURLs: true,
-            useShouldOverrideUrlLoading: false,
-          ),
-          android: AndroidInAppWebViewOptions(
-            useHybridComposition: true,
-            allowFileAccess: true,
-          ),
-        ),
-        onWebViewCreated: (controller) {
-          webViewController = controller;
+      body: localUrl == null
+          ? const Center(child: CircularProgressIndicator())
+          : InAppWebView(
+              initialUrlRequest: URLRequest(url: WebUri(localUrl!)),
+              initialSettings: InAppWebViewSettings(
+                javaScriptEnabled: true,
+                allowFileAccessFromFileURLs: true,
+                allowUniversalAccessFromFileURLs: true,
+              ),
+              onWebViewCreated: (controller) {
+                webViewController = controller;
 
-          controller.addJavaScriptHandler(
-            handlerName: 'scoreUpdate',
-            callback: (args) {
-              final data = args.isNotEmpty ? args.first : null;
-              if (data != null && data is Map) {
-                try {
-                  final score = data['score'];
-                  final level = data['level'];
-                  showDialog(
-                    context: context,
-                    builder: (_) => AlertDialog(
-                      title: const Text('Game Over'),
-                      content: Text('Level $level\nScore: $score'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    ),
-                  );
-                } catch (e) {
-                  debugPrint('scoreUpdate handler error: $e');
-                }
-              }
-              return null;
-            },
-          );
-        },
-        onConsoleMessage: (controller, consoleMessage) {
-          debugPrint('WebView console: ${consoleMessage.message}');
-        },
-      ),
+                controller.addJavaScriptHandler(
+                  handlerName: 'scoreUpdate',
+                  callback: (args) {
+                    final data = args.first;
+                    final score = data['score'];
+                    final level = data['level'];
+
+                    debugPrint('Game Score: $score | Level: $level');
+
+                    showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        title: const Text('Game Over'),
+                        content: Text('Level $level\nYour Score: $score'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
     );
   }
 }
