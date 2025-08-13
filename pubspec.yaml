@@ -64,8 +64,9 @@ flutter:
     - assets/www/index.html
     - assets/www/css/
     - assets/www/js/
-    - assets/www/sprites/
     - assets/www/sounds/
+    - assets/www/sprites/
+    - assets/www/favicon.ico
    
   # To add assets to your application, add an assets section, like this:
   # assets:

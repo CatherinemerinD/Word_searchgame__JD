@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_import
-
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:convert';
@@ -56,8 +54,12 @@ class _WebViewScreenState extends State<WebViewScreen> {
       await _copyAssetToFile('assets/www/index.html', '$folderPath/index.html');
       await _copyAssetFolder('assets/www/css', '$folderPath/css');
       await _copyAssetFolder('assets/www/js', '$folderPath/js');
-      await _copyAssetFolder('assets/www/sprites', '$folderPath/sprites');
       await _copyAssetFolder('assets/www/sounds', '$folderPath/sounds');
+      await _copyAssetFolder('assets/www/sprites', '$folderPath/sprites');
+      await _copyAssetToFile(
+        'assets/www/favicon.ico',
+        '$folderPath/favicon.ico',
+      );
 
       setState(() {
         localUrl = 'file://$folderPath/index.html';
@@ -102,6 +104,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
                 javaScriptEnabled: true,
                 allowFileAccessFromFileURLs: true,
                 allowUniversalAccessFromFileURLs: true,
+                mediaPlaybackRequiresUserGesture: false,
               ),
               onWebViewCreated: (controller) {
                 webViewController = controller;
