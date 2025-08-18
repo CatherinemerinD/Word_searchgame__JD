@@ -33,12 +33,15 @@ input, input:before, input:after {
 
 canvas {
 
-	-ms-touch-action: none;
+  -ms-touch-action: none;
+  touch-action: none;
 }
 
 .ani_hack{
     -webkit-perspective: 1000;
+    perspective: 1000;
     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -59,7 +62,13 @@ canvas {
          url('blackplotan-webfont-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+.check-fonts{
+        opacity:0;
+}
 
+.check-font-1{
+        font-family: 'blackplotanregular';
 }
 #logoSplash {
   position: fixed;
@@ -81,13 +90,4 @@ canvas {
   0% { transform: translateY(100%) scale(0.5); opacity: 0; }
   50% { transform: translateY(0) scale(1.2); opacity: 1; }
   100% { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-
-.check-fonts{
-        opacity:0;
-}
-
-.check-font-1{
-        font-family: 'blackplotanregular';
 }

@@ -9,6 +9,7 @@ android {
     namespace = "com.example.word_search_wrapper"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
+    
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
