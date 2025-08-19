@@ -62,16 +62,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/www/
-    - assets/www/index.html
-    - assets/www/css/reset.css
-    - assets/www/css/main.css
-    - assets/www/css/orientation_utils.css
-    - assets/www/js/jquery-3.2.1.min.js
-    - assets/www/js/easeljs-NEXT.min.js
-    - assets/www/js/screenfull.min.js
-    - assets/www/js/howler.min.js
-    - assets/www/js/CLang.min.js
-    - assets/www/js/main.js
+    - assets/www/css/
+    - assets/www/js/
     - assets/www/sounds/
     - assets/www/sprites/
     - assets/www/favicon.ico
