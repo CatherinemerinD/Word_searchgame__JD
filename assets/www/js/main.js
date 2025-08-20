@@ -714,7 +714,22 @@ function CLang0() {
             { cat_name: "Sharir-5 Body types", words: "audarik vakriya aaharak tejas karman".split(" "), rows:10, cols:10},
             { cat_name: "8 Types of Karma", words: "gyanavarniya darshanavarniya vedniya mohaniya ayushya nam gotra antraya".split(" "), rows:16,cols:16},
             { cat_name: "Tattva-9 Elements of reality", words: "jeev ajeev paap punya aashrav samwar nirjara bandh moksh".split(" "), rows:10, cols:10},
-            { cat_name: "Atma-8 states of souls", words: "dravya kashay yog upyog gyan darshan charitra veerya".split(" "), rows:10, cols:10}
+            { cat_name: "Atma-8 states of souls", words: "dravya kashay yog upyog gyan darshan charitra veerya".split(" "), rows:10, cols:10},
+            { cat_name: "Temple Kar", words: "dharmasthala shravanabelagola kundadri navagraha chaturmukha gomatagiri moodabidri".split(" "), rows:16,cols:16},
+            { cat_name: "Temples", words: "sonagir dilwara bawangaja ayodhya ranakpur khajuraho palitana puliyarmala kulpakji hatisingh girnar hanumantal shikharji ellora humcha".split(" "), rows:18, cols:18},
+            { cat_name: "Terapanth Acharya", words: "bhikshu bharmal raichand jetmal maghraj manaklal dalchand kaluram tulsi mahapragna mahashraman".split(" "), rows: 16, cols: 16 }, 
+            { cat_name: "Arihant 12 Gunn", words: "ashokvrksh surapushpvrshti divydhvani chaamar aasan bhaamandal dundubhi chhatr gyaanaatishay ujatishaya vachanaatishay apaayaapagamaatishay".split(" "), rows:20,cols:20},
+            { cat_name: "Samyik Mann Dosh", words:"avivek yashovaancha laabhvaanchcha garva bhay nidaan sanshay rosh avinay abahumaan".split(" "), rows:18,cols:18},
+            { cat_name: "Samyik Vachan Dosh", words:"kuvachan sahasaakar swachchhand sankshep kalah vikathaa haasya ashuddha nirapeksh mumman".split(" "), rows:18, cols:18},
+            { cat_name: "Samayik Kaya Dosh", words: "kuaasanh challasan chaladrishti saavdya Kziya aalambana aakunchanprasarran aalasya motan mal vimaasan nidraa veiyaavrittya".split(" "), rows:18, cols:18},
+            { cat_name: "Famous Kings", words: "shrenik konik samudravijay vasudev meghrath pardesi ikshuka".split(" "), rows:12, cols:12},
+            { cat_name: "Famous Queens" ,words:"dharinidevi roopini padmavathi gauri gaandhari satyabhama moolashri mooladatta kali sukali mahakali devaki chelna kamalavati".split(" "), rows: 18, cols: 18 },
+            { cat_name: "Famous Youth", words: "ATIMUKT AIVANTA MAYALI UVAYALI JALI PRAMUDHNA ANIKSEN YASHOBHADRA DEVBHADRA GAJASUKUMAL MEGHKUMAR".toLowerCase().split(" "), rows: 12, cols: 12 },
+            { cat_name: "12 Bhanvana", words: "Anitya Asarana Samsara Ekatva anyatva asuci Asrava Samvara Nirjara Loka Bodhidurlabha Dharma".toLowerCase().split(" "), rows: 16, cols: 16 }
+            //{ cat_name: "Angagams", words: "Acharang Suyagdang Thananga Samavayanga Bhagavati JnataDharmaKathanga Upasaka AntahKra AnuttaroupaPatika PrashnaVyakrana Vipaka Upang AupaPatika RajaPrashniya Jivabhigama Prajnapana Surya Chandra Jambudveepa Nirayarvali KalpaVatansika Pushpika PushpaChulika Vrashnidasha Nisheetha VrahatKalpa Vyavahara DashaShrutaSkandha PanchKalpa Mahanisheetha Avashyaka DashaVaikalika Uttaradhyayana OghaNiryukti".toLowerCase().split(" "), rows:25, cols:25}
+
+
+            
 
         ]
     }
