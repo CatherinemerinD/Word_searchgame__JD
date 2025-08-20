@@ -315,6 +315,11 @@ class _WebViewScreenState extends State<WebViewScreen> {
                 },
               );
             },
+            onConsoleMessage: (controller, consoleMessage) {
+              debugPrint(
+                "JS Console: ${consoleMessage.messageLevel} - ${consoleMessage.message}",
+              );
+            },
           ),
   );
 }
