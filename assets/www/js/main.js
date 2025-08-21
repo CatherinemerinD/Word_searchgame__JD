@@ -344,9 +344,9 @@ function CSpriteLibrary() {
             h, d[h].oSprite.onload = function () { this.oSpriteLibrary.setLoaded(this.szKey); this.oSpriteLibrary._onSpriteLoaded(this.szKey) }, d[h].oSprite.onerror = function (l) { var k = l.currentTarget; setTimeout(function () { d[k.szKey].oSprite.src = d[k.szKey].szPath }, 500) }, d[h].oSprite.src = d[h].szPath
     }; this.setLoaded = function (h) { a[h].bLoaded = !0 }; this.isLoaded = function (h) { return a[h].bLoaded }; this.getNumSprites = function () { return b }
 }
-var CANVAS_WIDTH = 640, CANVAS_HEIGHT = 960, CANVAS_WIDTH_HALF = .5 * CANVAS_WIDTH, CANVAS_HEIGHT_HALF = .5 * CANVAS_HEIGHT, EDGEBOARD_X = 20, EDGEBOARD_Y = 95, FPS = 30, FPS_TIME = 1 / FPS, DISABLE_SOUND_MOBILE = !1, PRIMARY_FONT = "blackplotanregular", SECONDARY_FONT = "arial", STATE_LOADING = 0, STATE_MENU = 1, STATE_HELP = 1, STATE_GAME = 3, ON_MOUSE_DOWN = 0, ON_MOUSE_UP = 1, ON_MOUSE_OVER = 2, ON_MOUSE_OUT = 3, ON_DRAG_START = 4, ON_DRAG_END = 5, STROKE_DIMENSION = 17, STROKE_DIMENSION_MARKED = 7, MAX_NUM_OF_COL_AND_ROW = 11, SIZE_TEXT_CELL = 60, MAX_ITERATION_RANDOM_NUMBER =
+var CANVAS_WIDTH = 640, CANVAS_HEIGHT = 960, CANVAS_WIDTH_HALF = .5 * CANVAS_WIDTH, CANVAS_HEIGHT_HALF = .5 * CANVAS_HEIGHT, EDGEBOARD_X = 20, EDGEBOARD_Y = 95, FPS = 30, FPS_TIME = 1 / FPS, DISABLE_SOUND_MOBILE = !1, PRIMARY_FONT = "blackplotanregular", SECONDARY_FONT = "arial", STATE_LOADING = 0, STATE_MENU = 1, STATE_HELP = 1, STATE_GAME = 3, ON_MOUSE_DOWN = 0, ON_MOUSE_UP = 1, ON_MOUSE_OVER = 2, ON_MOUSE_OUT = 3, ON_DRAG_START = 4, ON_DRAG_END = 5, STROKE_DIMENSION = 17, STROKE_DIMENSION_MARKED = 7, MAX_NUM_OF_COL_AND_ROW = 11, SIZE_TEXT_CELL = 68, MAX_ITERATION_RANDOM_NUMBER =
     1E3, TEXT_COLOR = "#ffffffff", TEXT_COLOR_2 = "#018def", SPAWN_WORDS_OFFSET_Y = -10, SHOW_SOLUTION = !1, NUM_OF_LANGUAGE = 6, LANGUAGE_ID = "english french german italian portoguese spanish".split(" "), COLOR_STROKE_MARKED = "rgba(255,0,0,0.7)", COLOR_STROKE = "rgba(92,190,248,0.5)", OFFSET_Y_GRID_LETTER = -125, OFFSET_Y_SPACE_WORDS_LIST = 7, NO_DIRECTION = -1, LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3, UP_LEFT = 4, UP_RIGHT = 5, DOWN_LEFT = 6, DOWN_RIGHT = 7, ALL_DIRECTION = 8, CELL_SIZE = { width: 100, height: 100 }, TEXT_WORD_COLOR = "#2f2f2f", MAX_WORD_LENGTH = 9, GRID_AREA_SIZE =
-        525, START_X_GRID = (CANVAS_WIDTH - GRID_AREA_SIZE) / 2, START_Y_GRID = CANVAS_HEIGHT - 200, ENABLE_FULLSCREEN, ENABLE_CHECK_ORIENTATION, SOUNDTRACK_VOLUME_IN_GAME = .3, DEFAULT_LANG, DEFAULT_CAT;
+        520, START_X_GRID = (CANVAS_WIDTH - GRID_AREA_SIZE) / 2, START_Y_GRID = CANVAS_HEIGHT - 190, ENABLE_FULLSCREEN, ENABLE_CHECK_ORIENTATION, SOUNDTRACK_VOLUME_IN_GAME = .3, DEFAULT_LANG, DEFAULT_CAT;
 function CPreloader() {
     var a, d, b, e, c, f, g, h, l, k; this._init = function () { s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this); s_oSpriteLibrary.addSprite("progress_bar", "./sprites/progress_bar.png"); s_oSpriteLibrary.addSprite("200x200", "./sprites/200x200.jpg"); s_oSpriteLibrary.addSprite("but_start", "./sprites/but_start.png"); s_oSpriteLibrary.loadSprites(); k = new createjs.Container; s_oStage.addChild(k) }; this.unload = function () { k.removeAllChildren(); l.unload() }; this._onImagesLoaded = function () { };
     this._onAllImagesLoaded = function () { this.attachSprites(); s_oMain.preloaderReady() }; this.attachSprites = function () {
@@ -438,7 +438,7 @@ function CMenu() {
     }; this.unload = function () {
         h.unload(); h = null; s_oStage.removeChild(g); g = null; if (!1 === DISABLE_SOUND_MOBILE || !1 === s_bMobile) p.unload(),
             p = null; z && screenfull.isEnabled && A.unload(); createjs.Tween.removeAllTweens(); s_oMenu = null
-    }; this.refreshButtonPos = function (t, v) { !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || p.setPosition(c - t, f + v); z && screenfull.isEnabled && A.setPosition(a + t, d + v); l.setPosition(b + t, e + v) }; this._onCredits = function () { new CCreditsPanel }; this._onAudioToggle = function () { Howler.mute(s_bAudioActive); s_bAudioActive = !s_bAudioActive }; this._onButPlayRelease = function () {
+    }; this.refreshButtonPos = function (t, v) { !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || p.setPosition(c - t, f + v); z && screenfull.isEnabled && A.setPosition(a + t, d + v); l.setPosition(b + t, e + v) }; this._onCredits = function () { /*new CCreditsPanel*/ }; this._onAudioToggle = function () { Howler.mute(s_bAudioActive); s_bAudioActive = !s_bAudioActive }; this._onButPlayRelease = function () {
         this.unload(); var t = parseInt(DEFAULT_LANG); "none" === DEFAULT_LANG ||
             isNaN(DEFAULT_LANG) || 0 > t || 5 < t ? s_oMain.gotoLanguageMenu() : (new window["CLang" + DEFAULT_LANG], "none" === DEFAULT_CAT || 1 > DEFAULT_CAT || DEFAULT_CAT > s_aJSONWords.categories.length ? s_oMain.gotoLevelMenu() : s_oMain.gotoGame(s_aJSONWords.categories[DEFAULT_CAT - 1]))
     }; this.resetFullscreenBut = function () { z && screenfull.isEnabled && A.setActive(s_bFullscreen) }; this._onFullscreenRelease = function () { s_bFullscreen ? E.call(window.document) : z.call(window.document.documentElement); sizeHandler() }; s_oMenu = this; this._init()
@@ -559,7 +559,7 @@ function CInterface() {
         C = new createjs.Text(C, F + "px " +
             PRIMARY_FONT, TEXT_COLOR); C.x = m; C.y = r; C.textAlign = D; C.textBaseline = X; C.lineWidth = x; return C
     }; this.spawnWords = function (m) {
-        for (var r = 2 * EDGEBOARD_X + 15, C = r, F = SPAWN_WORDS_OFFSET_Y, D = 0; D < m.length; D++)u.push(new createjs.Text(m[D], " 15px " + SECONDARY_FONT, TEXT_COLOR)), u[D].x = C, u[D].y = F, u[D].textAlign = "left", u[D].textBaseline = "center", u[D].lineWidth = 180, u[D].x + u[D].getBounds().width > CANVAS_WIDTH - r && (C = r, F += u[D].getBounds().height + OFFSET_Y_SPACE_WORDS_LIST, u[D].x = C, u[D].y = F), v.addChild(u[D]), C += u[D].getBounds().width +
+        for (var r = 2 * EDGEBOARD_X + 15, C = r, F = SPAWN_WORDS_OFFSET_Y, D = 0; D < m.length; D++)u.push(new createjs.Text(m[D], " 18px " + SECONDARY_FONT, TEXT_COLOR)), u[D].x = C, u[D].y = F, u[D].textAlign = "left", u[D].textBaseline = "center", u[D].lineWidth = 180, u[D].x + u[D].getBounds().width > CANVAS_WIDTH - r && (C = r, F += u[D].getBounds().height + OFFSET_Y_SPACE_WORDS_LIST, u[D].x = C, u[D].y = F), v.addChild(u[D]), C += u[D].getBounds().width +
             15, C > CANVAS_WIDTH - r - u[D].getBounds().width && (C = r, F += u[D].getBounds().height + OFFSET_Y_SPACE_WORDS_LIST); v.x = b
     }; this.drawLineOnWord = function (m) { var r = new createjs.Shape; r.graphics.setStrokeStyle(STROKE_DIMENSION_MARKED, "round", "round"); r.graphics.beginStroke(COLOR_STROKE_MARKED); r.graphics.moveTo(u[m].x, u[m].y); r.graphics.lineTo(u[m].x + u[m].getBounds().width, u[m].y); r.graphics.closePath(); L.push(r); v.addChild(r) }; this.refreshFPSText = function (m) { y.text = "FPS:" + m }; this.createWinPanel = function (m) {
         var r =
@@ -630,7 +630,7 @@ function CLevelBut(a, d, b, e, c, f) {
 }
 function CWordCell(a, d, b, e, c, f, g, h) {
     var l, k, p, A, z, E = !1, t, v = s_aJSONWords.alphabet, y, B, w; this._init = function (u, M, J, K, R, G, L) {
-        l = u; k = M; p = G; z = L; t = R; A = null; y = new createjs.Text("", SIZE_TEXT_CELL + "px " + SECONDARY_FONT, TEXT_WORD_COLOR); y.x = J; y.y = K + 5; y.textAlign = "center"; y.textBaseline = "alphabet"; y.lineWidth = 500; y.scaleX = y.scaleY = p; c.addChild(y); u = s_oSpriteLibrary.getSprite("hit_area_cell"); B = new CGfxButton(J, K, u, c); B.addEventListener(ON_MOUSE_DOWN, this._onCellClicked, this); B.regX = u.width / 2; B.regY = u.height / 2;
+        l = u; k = M; p = G; z = L; t = R; A = null; y = new createjs.Text("", SIZE_TEXT_CELL + "px " + SECONDARY_FONT, TEXT_WORD_COLOR); y.x = J; y.y = K + 5; y.textAlign = "center"; y.textBaseline = "alphabetic"; y.lineWidth = 500; y.scaleX = y.scaleY = p; c.addChild(y); u = s_oSpriteLibrary.getSprite("hit_area_cell"); B = new CGfxButton(J, K, u, c); B.addEventListener(ON_MOUSE_DOWN, this._onCellClicked, this); B.regX = u.width / 2; B.regY = u.height / 2;
         c.addChild(B.getButtonImage())
     }; this.isActive = function () { return E }; this.changeCellState = function (u) { (void 0).gotoAndStop("selected_" + u) }; this.getID = function () { return z }; this.changeCellText = function (u) { y.text = u }; this.checkInPlace = function (u) { return "" === y.text || y.text === u ? !0 : !1 }; this.getChar = function () { return y.text }; this.setRecOffset = function (u) { w = new createjs.Rectangle(u.x + B.getX() - 25, u.y + B.getY() - 25, u.x + B.getX() + 5, u.y + B.getY() + 5) }; this.setRandomChar = function (u) { "" === y.text && (y.text = v[u]) }; this._onCellClicked =
         function () { s_oGame.onCellSelected(this, l, k) }; this.setActive = function (u) { E = u }; this.getX = function () { return b }; this.getY = function () { return e }; this.getValue = function () { return t }; this.getState = function () { return A }; this.changeTextColor = function (u) { y.color = u }; this.getRotation = function () { return (void 0).rotation }; this.getRow = function () { return l }; this.getCol = function () { return k }; this.getRectPos = function () { return w }; this.unload = function () { B.unload(); B = null; c.removeChild(void 0) }; this._init(a, d, b, e, f, g, h); return this
@@ -696,37 +696,44 @@ CTLText.prototype = {
 function CTLText(a, d, b, e, c, f, g, h, l, k, p, A, z, E, t, v, y) { this._oContainer = a; this._x = d; this._y = b; this._iWidth = e; this._iHeight = c; this._bMultiline = v; this._iFontSize = f; this._szAlign = g; this._szColor = h; this._szFont = l; this._iPaddingH = p; this._iPaddingV = A; this._bVerticalAlign = t; this._bFitText = E; this._bDebug = y; this._oDebugShape = null; this._fLineHeightFactor = k; this._oText = null; z && this.__createText(z) }
 function CLang0() {
     s_aJSONWords = {
-        alphabet: "abcdefghijklmnopqrstuvwxyz".split(""), categories: [
-            { cat_name: "24 Thirthankars", words: "rishabhdev ajitanath sambhavanath abhinandan sumatinath padmaprabhu suparshvanath chandraprabhu suvidhinath shitalnath shreyasanath vasupujya vimalanath anantanath dharmanath shantinath kunthunath aranath mallinath munisuvrat naminath aristneminath parshavnath mahavir".split(" "), rows: 16, cols: 16 }, 
-            { cat_name: "16 Satiya", words: "brāhmī sundarī chandanbālā rājjīmatī draupadī kausalyā mṛugāvatī sulasā sītā subhadrā shivā kuntī damayantī puṣpacūlā prabhāvatī padmāvatī añjanāsundarī".split(" "), rows: 14, cols: 14 }, 
-            { cat_name: "20 Viharman", words: "simandhar yugmandhar bahu subahu sujat svayamprabh rishabhanan anantvirya surprabh vishaldhar vajradhar chandranan chandrabahu bhujangam ishwar nemiprabh virsen mahabhadra devyash ajitvirya".split(" "), rows: 14, cols: 14}, 
-            { cat_name: "12 Chakravarthi", words: "bharat sagar maghav sanat kumar shantinath kunthunath aranath subhaum padmanabh harishen jayasen brahmadatt".split(" "), rows: 14, cols: 14 }, 
-            { cat_name: "10 Shravaks", words: "anand kamdev chulanipita surdev chulnishatak kundkolik saddal putra mahashatak nandinipita salihipita".split(" "), rows: 14, cols: 14 }, 
-            { cat_name: "14 Sapna", words: "elephant bull lion goddesslakshmi garlandofflowers fullmoon sun flag kalasha lotuslake milkyocean divine chariot jewels smokelessfire".split(" "), rows: 16, cols: 16},
-            { cat_name: "8 Mangal", words: "swastika shrivatsa nandavarta vardhamanaka kalasha minyugala darpan bhadrasana".split(" "), rows: 12,cols:12},
-            { cat_name: "Navkar", words: "namo arihantanam siddhanam ayariyanam uvajjhayanam savvasahunam".split(" "), rows:16, cols:16},
-            { cat_name: "Gati-4 states of existence", words: "narak tiryanch manushya dev".split(" "), rows: 12, cols:12},
-            { cat_name: "Jaati-5 Sense bodied", words: "akendriya beindriya traiyendriya chaturendriya panchendriya".split(" "), rows:14, cols:14},
-            { cat_name: "Kaaya-6 Mobility", words: "prithvi ap tevu vayu vanaspati tras".split(" "), rows:10, cols:10},
-            { cat_name: "Indriya-5 Senses", words: "sparsh ras ghran chakshu shrot".split(" "), rows:8, cols:8},
-            { cat_name: "Paryapti-6 Powers", words: "aahaar shareer indriya swachoshwas bhaasha mann".split(" "), rows:12, cols:12},
-            { cat_name: "Praan-10 Vitalities", words: "sparshIndriyabalpran rasIndriyabalpran ghranlndriyabalpran chakshulndriyabalpran shrotIndriyabalpran manobalpran vachanbalpran kayabalpran shwasoshwasbalpran ayushyabalpran".split(" "), rows:18, cols:18}, 
-            { cat_name: "Sharir-5 Body types", words: "audarik vakriya aaharak tejas karman".split(" "), rows:10, cols:10},
-            { cat_name: "8 Types of Karma", words: "gyanavarniya darshanavarniya vedniya mohaniya ayushya nam gotra antraya".split(" "), rows:16,cols:16},
-            { cat_name: "Tattva-9 Elements of reality", words: "jeev ajeev paap punya aashrav samwar nirjara bandh moksh".split(" "), rows:10, cols:10},
-            { cat_name: "Atma-8 states of souls", words: "dravya kashay yog upyog gyan darshan charitra veerya".split(" "), rows:10, cols:10},
-            { cat_name: "Temple Kar", words: "dharmasthala shravanabelagola kundadri navagraha chaturmukha gomatagiri moodabidri".split(" "), rows:16,cols:16},
-            { cat_name: "Temples", words: "sonagir dilwara bawangaja ayodhya ranakpur khajuraho palitana puliyarmala kulpakji hatisingh girnar hanumantal shikharji ellora humcha".split(" "), rows:18, cols:18},
-            { cat_name: "Terapanth Acharya", words: "bhikshu bharmal raichand jetmal maghraj manaklal dalchand kaluram tulsi mahapragna mahashraman".split(" "), rows: 16, cols: 16 }, 
-            { cat_name: "Arihant 12 Gunn", words: "ashokvrksh surapushpvrshti divydhvani chaamar aasan bhaamandal dundubhi chhatr gyaanaatishay ujatishaya vachanaatishay apaayaapagamaatishay".split(" "), rows:20,cols:20},
-            { cat_name: "Samyik Mann Dosh", words:"avivek yashovaancha laabhvaanchcha garva bhay nidaan sanshay rosh avinay abahumaan".split(" "), rows:18,cols:18},
-            { cat_name: "Samyik Vachan Dosh", words:"kuvachan sahasaakar swachchhand sankshep kalah vikathaa haasya ashuddha nirapeksh mumman".split(" "), rows:18, cols:18},
-            { cat_name: "Samayik Kaya Dosh", words: "kuaasanh challasan chaladrishti saavdya Kziya aalambana aakunchanprasarran aalasya motan mal vimaasan nidraa veiyaavrittya".split(" "), rows:18, cols:18},
-            { cat_name: "Famous Kings", words: "shrenik konik samudravijay vasudev meghrath pardesi ikshuka".split(" "), rows:12, cols:12},
-            { cat_name: "Famous Queens" ,words:"dharinidevi roopini padmavathi gauri gaandhari satyabhama moolashri mooladatta kali sukali mahakali devaki chelna kamalavati".split(" "), rows: 18, cols: 18 },
-            { cat_name: "Famous Youth", words: "ATIMUKT AIVANTA MAYALI UVAYALI JALI PRAMUDHNA ANIKSEN YASHOBHADRA DEVBHADRA GAJASUKUMAL MEGHKUMAR".toLowerCase().split(" "), rows: 12, cols: 12 },
-            { cat_name: "12 Bhanvana", words: "Anitya Asarana Samsara Ekatva anyatva asuci Asrava Samvara Nirjara Loka Bodhidurlabha Dharma".toLowerCase().split(" "), rows: 16, cols: 16 }
-            //{ cat_name: "Angagams", words: "Acharang Suyagdang Thananga Samavayanga Bhagavati JnataDharmaKathanga Upasaka AntahKra AnuttaroupaPatika PrashnaVyakrana Vipaka Upang AupaPatika RajaPrashniya Jivabhigama Prajnapana Surya Chandra Jambudveepa Nirayarvali KalpaVatansika Pushpika PushpaChulika Vrashnidasha Nisheetha VrahatKalpa Vyavahara DashaShrutaSkandha PanchKalpa Mahanisheetha Avashyaka DashaVaikalika Uttaradhyayana OghaNiryukti".toLowerCase().split(" "), rows:25, cols:25}
+        alphabet: "abcdefghijklmnopqrstuvwxyz".toUpperCase().split(""), categories: [
+            { cat_name: "24 Thirthankars 1", words: "rishabhdev ajitanath sambhavanath abhinandan sumatinath padmaprabhu suparshvanath chandraprabhu suvidhinath shitalnath shreyasanath vasupujya".toUpperCase().split(" "), rows: 15, cols: 14 },
+            { cat_name: "24 Thirthankars 2", words: "vimalanath anantanath dharmanath shantinath kunthunath aranath mallinath munisuvrat naminath aristneminath parshavnath mahavir".toUpperCase().split(" "), rows: 13, cols: 12 }, 
+            { cat_name: "16 Satiya", words: "brāhmī sundarī chandanbālā rājjīmatī draupadī kausalyā mṛugāvatī sulasā sītā subhadrā shivā kuntī damayantī puṣpacūlā prabhāvatī padmāvatī añjanāsundarī".toUpperCase().split(" "), rows: 14, cols: 14 }, 
+            { cat_name: "20 Viharman 1", words: "simandhar yugmandhar bahu subahu sujat svayamprabh rishabhanan anantvirya surprabh vishaldhar".toUpperCase().split(" "), rows: 12, cols:10},
+            { cat_name: "20 Viharman 2", words: "vajradhar chandranan chandrabahu bhujangam ishwar nemiprabh virsen mahabhadra devyash ajitvirya".toUpperCase().split(" "), rows: 12, cols: 10}, 
+            { cat_name: "12 Chakravarthi", words: "bharat sagar maghav sanat kumar shantinath kunthunath aranath subhaum padmanabh harishen jayasen brahmadatt".toUpperCase().split(" "), rows: 14, cols: 14 }, 
+            { cat_name: "10 Shravaks", words: "anand kamdev chulanipita surdev chulnishatak kundkolik saddal putra mahashatak nandinipita salihipita".toUpperCase().split(" "), rows: 14, cols: 14 }, 
+            { cat_name: "14 Sapna", words: "elephant bull lion goddesslakshmi garlandflowers fullmoon sun flag kalasha lotuslake milkyocean divine chariot jewels smokelessfire".toUpperCase().split(" "), rows: 15, cols: 13},
+            { cat_name: "8 Mangal", words: "swastika shrivatsa nandavarta vardhamanaka kalasha minyugala darpan bhadrasana".toUpperCase().split(" "), rows: 12,cols:12},
+            { cat_name: "Navkar", words: "namo arihantanam siddhanam ayariyanam uvajjhayanam savvasahunam".toUpperCase().split(" "), rows:12, cols:12},
+            { cat_name: "Gati-4 states of existence", words: "narak tiryanch manushya dev".toUpperCase().split(" "), rows: 10, cols:8},
+            { cat_name: "Jaati-5 Sense bodied", words: "akendriya beindriya traiyendriya chaturendriya panchendriya".toUpperCase().split(" "), rows:14, cols:12},
+            { cat_name: "Kaaya-6 Mobility", words: "prithvi ap tevu vayu vanaspati tras".toUpperCase().split(" "), rows:10, cols:9},
+            { cat_name: "Indriya-5 Senses", words: "sparsh ras ghran chakshu shrot".toUpperCase().split(" "), rows:8, cols:8},
+            { cat_name: "Paryapti-6 Powers", words: "aahaar shareer indriya swachoshwas bhaasha mann".toUpperCase().split(" "), rows:12, cols:12},
+            { cat_name: "Praan-10 Vitalities 1", words: "sparshIndriya rasIndriya ghranlndriya chakshulndriya shrotIndriya".toUpperCase().split(" "), rows:16,cols:14},
+            { cat_name: "Praan-10 Vitalities 2", words: "manobal vachanbal kayabal shwasoshwas ayushyabal".toUpperCase().split(" "), rows:12, cols:11}, 
+            { cat_name: "Sharir-5 Body types", words: "audarik vakriya aaharak tejas karman".toUpperCase().split(" "), rows:10, cols:10},
+            { cat_name: "8 Types of Karma", words: "gyanavarniya darshanavarniya vedniya mohaniya ayushya nam gotra antraya".toUpperCase().split(" "), rows:16,cols:13},
+            { cat_name: "Tattva-9 Elements of reality", words: "jeev ajeev paap punya aashrav samwar nirjara bandh moksh".toUpperCase().split(" "), rows:10, cols:10},
+            { cat_name: "Atma-8 states of souls", words: "dravya kashay yog upyog gyan darshan charitra veerya".toUpperCase().split(" "), rows:10, cols:10},
+            { cat_name: "Temple Kar", words: "dharmasthala shravanabelagola kundadri navagraha chaturmukha gomatagiri moodabidri".toUpperCase().split(" "), rows:16,cols:16},
+            { cat_name: "Temples 1", words: "sonagir dilwara bawangaja ayodhya ranakpur khajuraho palitana".toUpperCase().split(" "), rows:12, cols:12},
+            { cat_name: "Temples 2", words: "uliyarmala kulpakji hatisingh girnar hanumantal shikharji ellora humcha".toUpperCase().split(" "), rows:11, cols:9},
+            { cat_name: "Terapanth Acharya", words: "bhikshu bharmal raichand jetmal maghraj manaklal dalchand kaluram tulsi mahapragna mahashraman".toUpperCase().split(" "), rows: 12, cols: 12 }, 
+            { cat_name: "Arihant 12 Gunn 1", words: "ashokvrksh surapushpvrshti divydhvani chaamar aasan bhaamandal".toUpperCase().split(" "), rows:15, cols:15},
+            { cat_name: "Arihant 12 Gunn 2", words: "dundubhi chhatr gyaanaati ujati vachanaati apaayaapagamaati".toUpperCase().split(" "), rows:16,cols:14},
+            { cat_name: "Samyik Mann Dosh", words:"avivek yashovaancha laabhvaanchcha garva bhay nidaan sanshay rosh avinay abahumaan".toUpperCase().split(" "), rows:15,cols:14},
+            { cat_name: "Samyik Vachan Dosh", words:"kuvachan sahasaakar swachchhand sankshep kalah vikathaa haasya ashuddha nirapeksh mumman".toUpperCase().split(" "), rows:13, cols:11},
+            { cat_name: "Samayik Kaya Dosh", words: "kuaasanh challasan chaladrishti saavdya Kziya aalambana aalasya motan mal vimaasan nidraa veiyaavrittya".toUpperCase().split(" "), rows:14, cols:12},
+            { cat_name: "Famous Kings", words: "shrenik konik samudravijay vasudev meghrath pardesi ikshuka".toUpperCase().split(" "), rows:12, cols:12},
+            { cat_name: "Famous Queens" ,words:"dharinidevi roopini padmavathi gauri gaandhari satyabhama moolashri mooladatta kali sukali mahakali devaki chelna kamalavati".toUpperCase().split(" "), rows: 12, cols: 11 },
+            { cat_name: "Famous Youth", words: "ATIMUKT AIVANTA MAYALI UVAYALI JALI PRAMUDHNA ANIKSEN YASHOBHADRA DEVBHADRA GAJASUKUMAL MEGHKUMAR".split(" "), rows: 12, cols: 12 },
+            { cat_name: "12 Bhanvana", words: "Anitya Asarana Samsara Ekatva anyatva asuci Asrava Samvara Nirjara Loka Bodhidurlabha Dharma".toUpperCase().split(" "), rows: 12, cols: 13 },
+            //{ cat_name: "Angagams 1", words: "Acharang Suyagdang Thananga Samavayanga Bhagavati  Upasaka AntahKra AnuttaroupaPatika PrashnaVyakrana".toLowerCase().split(" "), rows:18, cols:18},
+            { cat_name: "Angagams 1", words: "Vipaka Upang AupaPatika RajaPrashniya Jivabhigama Prajnapana Surya Chandra Jambudveepa Nirayarvali KalpaVatansika Pushpika".toUpperCase().split(" "), rows:14, cols:14},
+            { cat_name: "Angagams 2", words: "PushpaChulika Vrashnidasha Nisheetha VrahatKalpa Vyavahara PanchKalpa Mahanisheetha Avashyaka DashaVaikalika Uttaradhyayana OghaNiryukti".toUpperCase().split(" "), rows:14, cols:15}
 
 
             
