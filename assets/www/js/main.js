@@ -697,7 +697,7 @@ function CTLText(a, d, b, e, c, f, g, h, l, k, p, A, z, E, t, v, y) { this._oCon
 function CLang0() {
     s_aJSONWords = {
         alphabet: "abcdefghijklmnopqrstuvwxyz".toUpperCase().split(""), categories: [
-            { cat_name: "24 Thirthankars 1", words: "rishabhdev ajitanath sambhavanath abhinandan sumatinath padmaprabhu suparshvanath chandraprabhu suvidhinath shitalnath shreyasanath vasupujya".toUpperCase().split(" "), rows: 15, cols: 14 },
+            { cat_name: "24 Thirthankars 1", words: "rishabhdev ajitanath sambhavanath abhinandan sumatinath padmaprabhu suparshvanath chandraprabhu suvidhinath shitalnath shreyasanath vasupujya".toUpperCase().split(" "), rows: 15, cols: 15 },
             { cat_name: "24 Thirthankars 2", words: "vimalanath anantanath dharmanath shantinath kunthunath aranath mallinath munisuvrat naminath aristneminath parshavnath mahavir".toUpperCase().split(" "), rows: 13, cols: 12 }, 
             { cat_name: "16 Satiya", words: "brāhmī sundarī chandanbālā rājjīmatī draupadī kausalyā mṛugāvatī sulasā sītā subhadrā shivā kuntī damayantī puṣpacūlā prabhāvatī padmāvatī añjanāsundarī".toUpperCase().split(" "), rows: 14, cols: 14 }, 
             { cat_name: "20 Viharman 1", words: "simandhar yugmandhar bahu subahu sujat svayamprabh rishabhanan anantvirya surprabh vishaldhar".toUpperCase().split(" "), rows: 12, cols:10},
@@ -707,15 +707,15 @@ function CLang0() {
             { cat_name: "14 Sapna", words: "elephant bull lion goddesslakshmi garlandflowers fullmoon sun flag kalasha lotuslake milkyocean divine chariot jewels smokelessfire".toUpperCase().split(" "), rows: 15, cols: 13},
             { cat_name: "8 Mangal", words: "swastika shrivatsa nandavarta vardhamanaka kalasha minyugala darpan bhadrasana".toUpperCase().split(" "), rows: 12,cols:12},
             { cat_name: "Navkar", words: "namo arihantanam siddhanam ayariyanam uvajjhayanam savvasahunam".toUpperCase().split(" "), rows:12, cols:12},
-            { cat_name: "Gati-4 states of existence", words: "narak tiryanch manushya dev".toUpperCase().split(" "), rows: 10, cols:8},
-            { cat_name: "Jaati-5 Sense bodied", words: "akendriya beindriya traiyendriya chaturendriya panchendriya".toUpperCase().split(" "), rows:14, cols:12},
-            { cat_name: "Kaaya-6 Mobility", words: "prithvi ap tevu vayu vanaspati tras".toUpperCase().split(" "), rows:10, cols:9},
+            { cat_name: "Gati-4 states of existence", words: "narak tiryanch manushya dev".toUpperCase().split(" "), rows: 9, cols:9},
+            { cat_name: "Jaati-5 Sense bodied", words: "akendriya beindriya traiyendriya chaturendriya panchendriya".toUpperCase().split(" "), rows:14, cols:14},
+            { cat_name: "Kaaya-6 Mobility", words: "prithvi ap tevu vayu vanaspati tras".toUpperCase().split(" "), rows:10, cols:10},
             { cat_name: "Indriya-5 Senses", words: "sparsh ras ghran chakshu shrot".toUpperCase().split(" "), rows:8, cols:8},
             { cat_name: "Paryapti-6 Powers", words: "aahaar shareer indriya swachoshwas bhaasha mann".toUpperCase().split(" "), rows:12, cols:12},
-            { cat_name: "Praan-10 Vitalities 1", words: "sparshIndriya rasIndriya ghranlndriya chakshulndriya shrotIndriya".toUpperCase().split(" "), rows:16,cols:14},
-            { cat_name: "Praan-10 Vitalities 2", words: "manobal vachanbal kayabal shwasoshwas ayushyabal".toUpperCase().split(" "), rows:12, cols:11}, 
+            { cat_name: "Praan-10 Vitalities 1", words: "sparshIndriya rasIndriya ghranlndriya chakshulndriya shrotIndriya".toUpperCase().split(" "), rows:15,cols:15},
+            { cat_name: "Praan-10 Vitalities 2", words: "manobal vachanbal kayabal shwasoshwas ayushyabal".toUpperCase().split(" "), rows:12, cols:12}, 
             { cat_name: "Sharir-5 Body types", words: "audarik vakriya aaharak tejas karman".toUpperCase().split(" "), rows:10, cols:10},
-            { cat_name: "8 Types of Karma", words: "gyanavarniya darshanavarniya vedniya mohaniya ayushya nam gotra antraya".toUpperCase().split(" "), rows:16,cols:13},
+            { cat_name: "8 Types of Karma", words: "gyanavarniya darshanavarniya vedniya mohaniya ayushya nam gotra antraya".toUpperCase().split(" "), rows:15,cols:15},
             { cat_name: "Tattva-9 Elements of reality", words: "jeev ajeev paap punya aashrav samwar nirjara bandh moksh".toUpperCase().split(" "), rows:10, cols:10},
             { cat_name: "Atma-8 states of souls", words: "dravya kashay yog upyog gyan darshan charitra veerya".toUpperCase().split(" "), rows:10, cols:10},
             { cat_name: "Temple Kar", words: "dharmasthala shravanabelagola kundadri navagraha chaturmukha gomatagiri moodabidri".toUpperCase().split(" "), rows:16,cols:16},
@@ -723,17 +723,17 @@ function CLang0() {
             { cat_name: "Temples 2", words: "uliyarmala kulpakji hatisingh girnar hanumantal shikharji ellora humcha".toUpperCase().split(" "), rows:11, cols:9},
             { cat_name: "Terapanth Acharya", words: "bhikshu bharmal raichand jetmal maghraj manaklal dalchand kaluram tulsi mahapragna mahashraman".toUpperCase().split(" "), rows: 12, cols: 12 }, 
             { cat_name: "Arihant 12 Gunn 1", words: "ashokvrksh surapushpvrshti divydhvani chaamar aasan bhaamandal".toUpperCase().split(" "), rows:15, cols:15},
-            { cat_name: "Arihant 12 Gunn 2", words: "dundubhi chhatr gyaanaati ujati vachanaati apaayaapagamaati".toUpperCase().split(" "), rows:16,cols:14},
-            { cat_name: "Samyik Mann Dosh", words:"avivek yashovaancha laabhvaanchcha garva bhay nidaan sanshay rosh avinay abahumaan".toUpperCase().split(" "), rows:15,cols:14},
-            { cat_name: "Samyik Vachan Dosh", words:"kuvachan sahasaakar swachchhand sankshep kalah vikathaa haasya ashuddha nirapeksh mumman".toUpperCase().split(" "), rows:13, cols:11},
-            { cat_name: "Samayik Kaya Dosh", words: "kuaasanh challasan chaladrishti saavdya Kziya aalambana aalasya motan mal vimaasan nidraa veiyaavrittya".toUpperCase().split(" "), rows:14, cols:12},
+            { cat_name: "Arihant 12 Gunn 2", words: "dundubhi chhatr gyaanaati ujati vachanaati apaayaapagamaati".toUpperCase().split(" "), rows:16,cols:16},
+            { cat_name: "Samyik Mann Dosh", words:"avivek yashovaancha laabhvaanchcha garva bhay nidaan sanshay rosh avinay abahumaan".toUpperCase().split(" "), rows:15,cols:15},
+            { cat_name: "Samyik Vachan Dosh", words:"kuvachan sahasaakar swachchhand sankshep kalah vikathaa haasya ashuddha nirapeksh mumman".toUpperCase().split(" "), rows:12, cols:12},
+            { cat_name: "Samayik Kaya Dosh", words: "kuaasanh challasan chaladrishti saavdya Kziya aalambana aalasya motan mal vimaasan nidraa veiyaavrittya".toUpperCase().split(" "), rows:13, cols:13},
             { cat_name: "Famous Kings", words: "shrenik konik samudravijay vasudev meghrath pardesi ikshuka".toUpperCase().split(" "), rows:12, cols:12},
-            { cat_name: "Famous Queens" ,words:"dharinidevi roopini padmavathi gauri gaandhari satyabhama moolashri mooladatta kali sukali mahakali devaki chelna kamalavati".toUpperCase().split(" "), rows: 12, cols: 11 },
+            { cat_name: "Famous Queens" ,words:"dharinidevi roopini padmavathi gauri gaandhari satyabhama moolashri mooladatta kali sukali mahakali devaki chelna kamalavati".toUpperCase().split(" "), rows: 12, cols: 12 },
             { cat_name: "Famous Youth", words: "ATIMUKT AIVANTA MAYALI UVAYALI JALI PRAMUDHNA ANIKSEN YASHOBHADRA DEVBHADRA GAJASUKUMAL MEGHKUMAR".split(" "), rows: 12, cols: 12 },
-            { cat_name: "12 Bhanvana", words: "Anitya Asarana Samsara Ekatva anyatva asuci Asrava Samvara Nirjara Loka Bodhidurlabha Dharma".toUpperCase().split(" "), rows: 12, cols: 13 },
-            //{ cat_name: "Angagams 1", words: "Acharang Suyagdang Thananga Samavayanga Bhagavati  Upasaka AntahKra AnuttaroupaPatika PrashnaVyakrana".toLowerCase().split(" "), rows:18, cols:18},
+            { cat_name: "12 Bhanvana", words: "Anitya Asarana Samsara Ekatva anyatva asuci Asrava Samvara Nirjara Loka Bodhidurlabha Dharma".toUpperCase().split(" "), rows: 13, cols: 13 },
+          //{ cat_name: "Angagams 1", words: "Acharang Suyagdang Thananga Samavayanga Bhagavati  Upasaka AntahKra AnuttaroupaPatika PrashnaVyakrana".toLowerCase().split(" "), rows:18, cols:18},
             { cat_name: "Angagams 1", words: "Vipaka Upang AupaPatika RajaPrashniya Jivabhigama Prajnapana Surya Chandra Jambudveepa Nirayarvali KalpaVatansika Pushpika".toUpperCase().split(" "), rows:14, cols:14},
-            { cat_name: "Angagams 2", words: "PushpaChulika Vrashnidasha Nisheetha VrahatKalpa Vyavahara PanchKalpa Mahanisheetha Avashyaka DashaVaikalika Uttaradhyayana OghaNiryukti".toUpperCase().split(" "), rows:14, cols:15}
+            { cat_name: "Angagams 2", words: "PushpaChulika Vrashnidasha Nisheetha VrahatKalpa Vyavahara PanchKalpa Mahanisheetha Avashyaka DashaVaikalika Uttaradhyayana OghaNiryukti".toUpperCase().split(" "), rows:15, cols:15}
 
 
             
